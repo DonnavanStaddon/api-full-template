@@ -36,9 +36,11 @@ function writeToDocument(type) {
             var dataRow = [];
 
             Object.keys(item).forEach(function (key) {
-                dataRow.push(`<td>${item[key]}</td>`);
+                var rowData = item[key].toString();
+                var truncatedData = rowData.substring(0, 15)//takes the first 15 characters from row data
+                dataRow.push(`<td>${truncatedData}</td>`);
             });
-            tableRows.push(dataRow);
+            tableRows.push(`<tr>${dataRow}</tr>`);
         });
         el.innerHTML = `<table>${tableHeaders}${tableRows}</table>`
     });
