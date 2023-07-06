@@ -7,6 +7,14 @@ xhr.send();
 
 xhr.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-        data = this.responseText;
+        data = JSON.parse(this.responseText);
     }
 };
+
+//setTimeout(function () {
+//console.log(data)
+//}, 500);
+
+setTimeout(() => {
+    console.log(data)
+}, 500);
