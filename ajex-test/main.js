@@ -14,14 +14,26 @@ function getData(type, cb) {
     };
 }
 
+function getTableHeaders(obj) {
+    var getTableHeaders = [];
+
+    Object.keys(obj).forEach(function (key) {
+        getTableHeaders.push(`<td>${key}</td>`);
+    });
+    return `<tr>${getTableHeaders}</tr>`;
+}
+
 function writeToDocument(type) {
     var el = document.getElementById("data");
     el.innerHTML = "";
+
     getData(type, function (data) {
         data = data.results;
+        var tableHeaders = getTableHeaders(data[0]);
 
         data.forEach(function (item) {
-            el.innerHTML += "<p>" + item.name + "</p>";
+            //el.innerHTML += "<p>" + item.name + "</p>";
         });
+        el.innerHTML = `<table>${tableHeaders}</table>`
     });
 };
