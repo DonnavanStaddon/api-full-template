@@ -6,6 +6,6 @@ xhr.send();
 
 xhr.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("data").innerHTML = this.responseText;
+        console.log(typeof (JSON.parse(this.response)));
     }
 };
